@@ -1,5 +1,6 @@
 //Algorithmo de Busqueda en Profundidad
 // Deep first Search Algorithm (DFS)
+// Complejidad O(V + E) 
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -41,12 +42,19 @@ void Grafo::DFS()
 {
     // LLama la funcion recursiva auxiliar y la aplica 
     // por todos los vertices uno a uno.
-    for (auto i : aristas)
-        if (nodos_recorridos[i.first] == false)
+    int n = 0;
+    for (auto i : aristas){
+        if (nodos_recorridos[i.first] == false){
             DFSaux(i.first);
+            cout << "\n";
+            n++;
+        }
+        
+    }
+    cout << "Componentes Conexas:" << n;
 }
- 
-// Driver  Code
+
+
 int main()
 {
     // Creamos el grafo 
@@ -57,6 +65,11 @@ int main()
     g.agregar_arista(2, 0);
     g.agregar_arista(2, 3);
     g.agregar_arista(9, 3);
+    g.agregar_arista(8, 7);
+    g.agregar_arista(5, 8);
+    g.agregar_arista(10,10);
+
+    
  
     cout << "Busqueda en profundida desde el nodo 0 \n";
     g.DFS();
